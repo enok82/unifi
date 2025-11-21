@@ -15,7 +15,7 @@ sed -e "s;<<SSID>>;$ssid;g" -e "s;<<PSK>>;$psk;g" -e "s;<<USER>>;$user;g" -e "s;
 
 
 # don't know what this is for but probably should be randomised
-authkey=$(</dev/urandom tr -dc 'A-Z' | fold -w32 | head -n1)
+authkey=$(LC_ALL=C tr -dc 'A-Z' </dev/urandom | head -c32)
 
 sed -e "s;<<AUTHKEY>>;$authkey;g" mgmt-template > mgmt
 
