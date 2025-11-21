@@ -21,6 +21,6 @@ sed -e "s;<<AUTHKEY>>;$authkey;g" mgmt-template > mgmt
 
 echo "default password is ubnt"
 
-scp mgmt ubnt@$host:/etc/persistent/cfg/
-scp new.cfg ubnt@$host:/tmp/
+scp -O mgmt ubnt@$host:/etc/persistent/cfg/
+scp -O new.cfg ubnt@$host:/tmp/
 ssh ubnt@$host "cfgmtd -w -p /etc/ -f /tmp/new.cfg && reboot"
